@@ -1,0 +1,38 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navigate</h3>
+                <ul>
+                    <li><a href="{{ SITEURL }}/">Projects</a></li>
+                    <li><a href="{{ SITEURL }}/archives.html">Archives</a></li>
+                    {% for pg in pages %}
+                    <li><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul class="social-links">
+                    {% if SOCIAL %}
+                        {% for name, link in SOCIAL %}
+                        <li><a href="{{ link }}" target="_blank" rel="noopener">{{ name }}</a></li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>{{ AUTHOR }}</h3>
+                <a  href="{{ SOURCE_LINK }}" target="_blank" class="footer-bio">
+                    View my portoflio source code on github
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Built by Patrick Harrison using <a href="https://getpelican.com/" target="_blank">Pelican</a>.</p>
+        </div>
+    </div>
+</footer>
