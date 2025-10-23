@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<article class="article">
+    <header class="article-header">
+        <h1 class="article-title">{{ article.title }}</h1>
+        <div class="article-meta">
+            <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+            {% if article.author %}
+            <span class="author">by {{ article.author }}</span>
+            {% endif %}
+            {% if article.category %}
+            <span class="category">{{ article.category }}</span>
+            {% endif %}
+        </div>
+        {% if article.tags %}
+        <div class="article-tags">
+            {% for tag in article.tags %}
+            <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+    
+    <div class="article-content">
+        {{ article.content }}
+    </div>
+    
+    {% if article.modified %}
+    <footer class="article-footer">
+        <p class="last-modified">Last updated: {{ article.locale_modified }}</p>
+    </footer>
+    {% endif %}
+</article>
+
+<nav class="article-navigation">
+    {% if article.prev_article %}
+    <a href="{{ SITEURL }}/{{ article.prev_article.url }}" class="nav-link prev">
+        <span class="label">← Previous</span>
+        <span class="title">{{ article.prev_article.title }}</span>
+    </a>
+    {% endif %}
+    {% if article.next_article %}
+    <a href="{{ SITEURL }}/{{ article.next_article.url }}" class="nav-link next">
+        <span class="label">Next →</span>
+        <span class="title">{{ article.next_article.title }}</span>
+    </a>
+    {% endif %}
+</nav>
+{% endblock %}
