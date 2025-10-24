@@ -10,24 +10,5 @@
         <p class="author-bio">{{ AUTHOR_BIO }}</p>
         {% endif %}
     </header>
-    
-    <div class="author-projects">
-        <h2>Projects by {{ author }}</h2>
-        <div class="project-grid">
-            {% for article in articles %}
-            <article class="project-card">
-                <div class="project-meta">
-                    <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
-                </div>
-                <h3 class="project-title">
-                    <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-                </h3>
-                {% if article.summary %}
-                <p class="project-summary">{{ article.summary|striptags }}</p>
-                {% endif %}
-            </article>
-            {% endfor %}
-        </div>
-    </div>
 </section>
 {% endblock %}
